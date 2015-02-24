@@ -1,4 +1,5 @@
 require_relative 'response'
+require_relative 'printer'
 
 class Mastermind
 attr_reader :sequence
@@ -8,38 +9,33 @@ attr_reader :sequence
   end
 
   def execute(input)
-    sequence = "BBGB".upcase #find a way to randomize a string with characters R,B,Y,G
-    if input == secret
+    sequence = @sequence #find a way to randomize a string with characters R,B,Y,G
+    if input == @sequence
       Response.new(:message => "You Win!", :status => :won)
     else
       Response.new(:message => "Guess again!", :status => :continue)
     end
   end
 
-  def greeting
-    puts "Welcome to Mastermind"
+end
+
+class Time
+attr_reader :start, :finish
+
+  def initialize
+    @start = "nil"
+    @finish = "nil"
   end
 
-  def menu
-    puts "Menu: Would you like to (p)lay, read the (i)nstructions, (c)heat or (q)uit?"
+  def start_timer
+    @start = Time.now
   end
 
-  def play_game
-       puts "Play the game"
+  def finish_timer
+    @finish = Time.now
   end
 
-  def instructions
-    puts "instructions" #insert instructions here
+  def elapsed_time
+    @finish - @start
   end
-
-  def cheat
-    #If it’s 'c' or 'cheat' then print out the current secret code
-  end
-
-  def quit
-    puts "Quitting...Goodbye" #figure out if you need to exit
-
-  end
-
-
 end
