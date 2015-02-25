@@ -53,7 +53,7 @@ class Printer
   #     menu
   #   end
 
-  end
+
 
   def cheat
   #If it’s 'c' or 'cheat' then print out the current secret code
@@ -64,6 +64,17 @@ class Printer
     return menu
   end
 
+  def make_guess
+      puts "Enter your guess:"
+  end
+
+  def winner
+    puts "Winner!"
+  end
+
+  def guess_again
+    puts "Guess again!"
+  end
 end
 
 printer = Printer.new

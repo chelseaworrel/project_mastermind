@@ -10,9 +10,25 @@ printer.greeting
 printer.menu
 
 input = gets.chomp
+# :won = false
+#   while :won
+#     mastermind.execute
+
+won = false
+  while won
+    printer.make_guess
+    guess = gets.chomp
+    if guess == @sequence
+      printer.winner
+      won = true
+    else
+      printer.guess_again
+    end
+  end
+
 
   if input == 'i'
-    printer.instructions 
+    printer.instructions
 
   elsif input == 'q'
     printer.quit
@@ -22,16 +38,16 @@ input = gets.chomp
     mastermind = Mastermind.new #instatiate the game
     puts "I have generated a beginner sequence with four elements made up of: (r)ed,
   (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.
-  What's your guess?" "#{mastermind.sequence}" #when you are ready delete :#{mastermind.sequence}
-
-  until response && response.status == :won
-    print "> "
-    input = gets.chomp
-    response = mastermind.execute(input)
-    puts response.message
+  What's your guess?" "#{mastermind.create_code}" #when you are ready delete :#{mastermind.sequence}
   end
 
+  # until response && response.status == :won
+  #   print "> "
+  #   input = gets.chomp
+  #   response = mastermind.execute(input)
+  #   puts response.message
+  # end
 
-end
+
 #at some point: call your Time class
 #timer = Time.new

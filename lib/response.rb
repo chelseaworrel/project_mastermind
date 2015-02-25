@@ -15,12 +15,9 @@ class Response
   # def evaluate_guess(guess)
   #  resp = Response.new
   #
-  #  if guess < secret
+  #  if guess != @sequence
   #   resp.signal = :keep_going
-  #   resp.message = :guess_too_low
-  #  elsif guess > secret
-  #    resp.signal = :keep_going
-  #    resp.message = :guess_too_high
+  #   resp.message = :guess_again
   #  else
   #    resp.signal = :stop
   #    resp.message = :winner
